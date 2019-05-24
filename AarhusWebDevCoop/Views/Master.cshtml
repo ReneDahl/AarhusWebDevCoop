@@ -1,0 +1,44 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Master>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Umbraco.Field("titleTag") | Arhus Web Developer Corporation </title>
+    <meta name="description" content="@Umbraco.Field("metaDescription")">
+    <meta name="keywords" content="@Umbraco.Field("metaKeywords")">
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/sticky-footer.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+
+    @Umbraco.RenderMacro("mainMenu")
+
+    @RenderBody()
+
+
+
+
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted"> @Umbraco.Field("footer", recursive: true)</span>
+        </div>
+    </footer>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+
+</html>

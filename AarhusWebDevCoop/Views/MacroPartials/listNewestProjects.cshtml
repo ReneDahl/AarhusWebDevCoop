@@ -1,0 +1,32 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+
+@{
+
+
+
+var NumOfProjects = Model.MacroParameters["NumOfProjects"];
+
+
+IPublishedContent[] selection =
+Model.Content.AncestorOrSelf(1)
+.Children()
+.Where(x => x.DocumentTypeAlias == "projectsOverview")
+.First()
+.Children
+.Where(x => x.HasValue("projectStatus") && Umbraco.GetPreValueAsString(x.GetPropertyValue<int>("projectStatus")) == "Completed")
+.OrderBy(x => x.CreateDate).Take(Convert.ToInt32(NumOfProjects))
+
+.ToArray();
+
+}
+<ul>
+    @foreach (IPublishedContent item in selection)
+    {
+        <li>
+            <a href="@item.Url">@item.Name</a>
+        </li>
+    }
+
+
+</ul>
+
