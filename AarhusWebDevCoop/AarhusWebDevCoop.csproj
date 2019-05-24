@@ -285,6 +285,12 @@
     <Content Include="Content\signin.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Media\1001\dev.jpg" />
+    <Content Include="Media\1001\mig.jpg" />
+    <Content Include="Media\1001\mig_thumb.jpg" />
+    <Content Include="Media\1002\test.jpg" />
+    <Content Include="Media\1002\test_big-thumb.jpg" />
+    <Content Include="Media\1002\test_thumb.jpg" />
     <Content Include="Media\logo.png" />
     <Content Include="Media\slider1.jpg" />
     <Content Include="Media\slider2.jpg" />

@@ -63,19 +63,28 @@
 
 else
 {
-    <p>You are currently logged in as @Members.GetCurrentLoginStatus().Name</p>
+    <div class="container mt-5">
+        <p>You are currently logged in as @Members.GetCurrentLoginStatus().Name</p>
 
 
-    <a href="/Members">Memberspage</a>
+        <a href="/Members">Memberspage</a>
+
+
+        @{
+            var logoutModel = new PostRedirectModel();
+            logoutModel.RedirectUrl = "/";
+            using (Html.BeginUmbracoForm<UmbLoginStatusController>
+                ("HandleLogout"))
+            {
+                <button>Logout</button>
+                @Html.HiddenFor(m => logoutModel.RedirectUrl)
+            }
+        }
+    </div>
 
 
 
-    var logoutModel = new PostRedirectModel();
-    logoutModel.RedirectUrl = "/";
-    using (Html.BeginUmbracoForm<UmbLoginStatusController>
-        ("HandleLogout"))
-    {
-        <button>Logout</button>
-        @Html.HiddenFor(m => logoutModel.RedirectUrl)
-    }
+
+
+
 }

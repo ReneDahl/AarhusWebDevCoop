@@ -4,9 +4,12 @@
 	Layout = "Master.cshtml";
 }
 
+    <div class="container">
+        @Model.ProjectsTitle
+        @Umbraco.RenderMacro("listProjects")
 
-    @Model.ProjectsTitle
-    @Umbraco.RenderMacro("listProjects")
-    
 
+
+
+    </div>
 
