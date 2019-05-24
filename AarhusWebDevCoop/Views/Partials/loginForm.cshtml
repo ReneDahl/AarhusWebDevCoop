@@ -29,60 +29,36 @@
 
     //This is a html helper, it will output a form at runtime....
 
-    @*<div class="container mt-5">
+    <div class="container mt-5">
         <div class="col-sm-6 offset-2">
             <div class="text-center">
                 @using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin"))
                 {
 
-
-                    <img class="mb-4" src="~/Media/logo.png" alt="">
+                    <img class="mb-4 mt-4" src="~/Media/logo.png" alt="">
                     <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
-
                     <label for="inputEmail" class="sr-only">@loginModel.Username</label>
                     @Html.TextBoxFor(m => loginModel.Username, new { @class = "form-control" })
-
                     <label for="inputPassword" class="sr-only">@loginModel.Password</label>
-                    @Html.PasswordFor(m => loginModel.Password, new { @class = "form-control" })
-
+                    @Html.PasswordFor(m => loginModel.Password, new { @class = "form-control mt-1" })
                     <div class="checkbox mb-3">
                         <label>
                             <input type="checkbox" class="mt-4" value="remember-me"> Remember me
                         </label>
                     </div>
-
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                     @Html.ValidationSummary("loginModel", true)
-
                 }
             </div>
         </div>
+    </div>
 
 
 
-    </div>*@
 
 
-    using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin"))
-        {
-            <fieldset>
-                <legend>Login</legend>
 
-                @Html.ValidationSummary("loginModel", true)
 
-                @Html.LabelFor(m => loginModel.Username)
-                @Html.TextBoxFor(m => loginModel.Username)
-                @Html.ValidationMessageFor(m => loginModel.Username)
-                <br />
-
-                @Html.LabelFor(m => loginModel.Password)
-                @Html.PasswordFor(m => loginModel.Password)
-                @Html.ValidationMessageFor(m => loginModel.Password)
-                <br />
-
-                <button>Login</button>
-            </fieldset>
-        }
 }
 
 else
@@ -96,7 +72,8 @@ else
 
     var logoutModel = new PostRedirectModel();
     logoutModel.RedirectUrl = "/";
-    using (Html.BeginUmbracoForm<UmbLoginStatusController>("HandleLogout"))
+    using (Html.BeginUmbracoForm<UmbLoginStatusController>
+        ("HandleLogout"))
     {
         <button>Logout</button>
         @Html.HiddenFor(m => logoutModel.RedirectUrl)
