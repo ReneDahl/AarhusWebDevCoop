@@ -407,6 +407,8 @@
     <Content Include="Views\Partials\Grid\Bootstrap2-Fluid.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\TheGrid2.cshtml" />
+    <Content Include="Views\Jobs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

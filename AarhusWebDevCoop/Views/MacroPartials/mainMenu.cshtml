@@ -5,14 +5,14 @@
     //Main navigation
 
     var root = Model.Content.Site();
-    var selection = root.Children.Where(x => x.IsVisible()).ToArray();
+
 
 
 
 }
 
 @{
-    //Dropdown menu!
+    //Dropdown menu! Bad way of doing it...
 
     IPublishedContent[] projectDropdown =
     Model.Content.AncestorOrSelf(1)
@@ -40,47 +40,36 @@
             <li class="nav-item @(Model.Content.Name == root.Name ? "current" : null)">
                 <a class="nav-link" href="@root.Url">@root.Name</a>
             </li>
-
-            @if (selection.Length > 0)
+            @foreach (var node in root.Children)
             {
-
-
-                foreach (var item in selection)
-                {
-                    <li class="@(item.IsAncestorOrSelf(Model.Content) ? "current": null) nav-item">
-                        <a href="@item.Url" class="nav-link">@item.Name</a>
-                    </li>
-                }
-
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Projects
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @if (selection.Length > 0)
-                        {
-                            foreach (var menuItem in projectDropdown.Where("UmbracoNavHide == false"))
-                            {
-                                var isProtected = umbraco.library.IsProtected(menuItem.Id, menuItem.Path);
-                                var loginAccess = isProtected && umbraco.library.HasAccess(menuItem.Id, menuItem.Path);
-
-                                if (!isProtected || loginAccess)
-                                {
-                                    <a class="dropdown-item" href="@menuItem.Url">@menuItem.Name</a>
-                                }
-                            }
-
-                        }
-
-
-
-                    </div>
-                </li>
-
-
-
+                <li class="nav-item"><a href="@node.Url" class="nav-link">@node.Name</a></li>
             }
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Projects
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    @foreach (var menuItem in projectDropdown.Where("UmbracoNavHide == false"))
+                    {
+                        var isProtected = umbraco.library.IsProtected(menuItem.Id, menuItem.Path);
+                        var loginAccess = isProtected && umbraco.library.HasAccess(menuItem.Id, menuItem.Path);
+
+                        if (!isProtected || loginAccess)
+                        {
+                            <a class="dropdown-item" href="@menuItem.Url">@menuItem.Name</a>
+                        }
+                    }
+
+
+
+
+
+                </div>
+            </li>
+
         </ul>
     </div>
 

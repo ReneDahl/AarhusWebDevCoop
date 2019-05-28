@@ -1,0 +1,14 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Jobs>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Master.cshtml";
+    //This view is stronglytyped, it means it is connected to the model.
+
+}
+<div class="container">
+    @Model.JobsTitle
+    @Model.JobsContent
+
+</div>
+
+
