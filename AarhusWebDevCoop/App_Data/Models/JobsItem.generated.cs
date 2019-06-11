@@ -20,16 +20,16 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedContentModels
 {
-	/// <summary>Jobs</summary>
-	[PublishedContentModel("jobs")]
-	public partial class Jobs : Master
+	/// <summary>Jobs Item</summary>
+	[PublishedContentModel("jobsItem")]
+	public partial class JobsItem : Master
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "jobs";
+		public new const string ModelTypeAlias = "jobsItem";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Jobs(IPublishedContent content)
+		public JobsItem(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -40,13 +40,13 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Jobs, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<JobsItem, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
-		/// JobsContent
+		/// Jobs Content
 		///</summary>
 		[ImplementPropertyType("jobsContent")]
 		public IHtmlString JobsContent
@@ -55,7 +55,7 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
-		/// JobsTitle
+		/// Jobs title
 		///</summary>
 		[ImplementPropertyType("jobsTitle")]
 		public string JobsTitle
